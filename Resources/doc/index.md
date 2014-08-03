@@ -89,57 +89,22 @@ class BlogPost
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Acme\UserBundle\Entity\User", inversedBy="posts")
-     */
-    private $author;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\Category", inversedBy="posts")
-     */
-    private $category;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $summary;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $content;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAt;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $image;
-
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $tags;
 }
 ```
 
 ### The OpenGraph map
 
-Now, you just have to define an **OpenGraph map** associated with this entity.
-To do so, you have to create a class implementing `Tga\OpenGraphBundle\Map\OpenGraphMapInterface`
-and the two required methods : `map(OpenGraphDocument $document, $entity)` and `supports($entity)`.
+The map associated with your entity will be a class implementing
+`Tga\OpenGraphBundle\Map\OpenGraphMapInterface` and the two required methods of this interface :
+`map(OpenGraphDocument $document, $entity)` and `supports($entity)`.
 
 For instance, our map could look like this :
 
@@ -177,12 +142,11 @@ class BlogPostMap implements OpenGraphMapInterface
 }
 ```
 
-Here, we are saying with the method `supports` that this map only supports instances of `BlogPost`.
-And in the method `map`, we are creating our document using the `$blogPost` entity (as we are sure
-this object is an isntance of `BlogPost`).
+The `supports` method declares with what kind of entities this map is able to deal.
+The `map` method create an OpenGraph document representing the given entity.
 
-This map is now available and usable. However, we still need to declare it to the maps registry.
-We will use the service container for that, using the tag `open_graph.map` :
+Once created, we still have to register our class into the OpenGraph registry. To do so,
+we will have to use the tag `open_graph.map`:
 
 ``` xml
 <!-- services.yml -->
@@ -228,7 +192,7 @@ For instance, with Twig:
 Using the router
 ----------------
 
-You will very often need the router into your OpenGraph maps to fill the `og:url` property.
+You will need very often the router into your OpenGraph maps to fill the `og:url` property.
 To ease your job, the TgaOpenGraphBundle inject the router in your maps if they extends the
 `RouterAware` class:
 
