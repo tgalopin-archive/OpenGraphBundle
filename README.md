@@ -7,18 +7,18 @@ It provides useful tools to use OpenGraph with your classic entities.
 For instance, once set up, you will be able to render OpenGraph for
 any entity very easily:
 
-    ``` html
-    <html>
-        <head>
-            <title>Blog post</title>
+``` html
+<html>
+    <head>
+        <title>Blog post</title>
 
-            {{ tga_render_opengraph(blogPost) }}
-        </head>
-        <body>
-            ...
-        </body>
-    </html>
-    ```
+        {{ tga_render_opengraph(blogPost) }}
+    </head>
+    <body>
+        ...
+    </body>
+</html>
+```
 
 The aim of this bundle is to introduce reusability and flexibility
 into your OpenGraph definitions.
