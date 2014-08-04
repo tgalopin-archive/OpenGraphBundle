@@ -19,17 +19,9 @@ Installation is very quick:
 
 ### 1. Download it with Composer
 
-Add the bundle to your `composer.json` file:
+Add the bundle to your `composer.json` file by running:
 
-``` json
-{
-    "require": {
-        "tga/opengraph-bundle": "dev-master"
-    }
-}
-```
-
-And run `composer install tga/opengraph-bundle`.
+`composer require tga/opengraph-bundle:dev-master`
 
 ### 2. Enable it in your kernel
 
