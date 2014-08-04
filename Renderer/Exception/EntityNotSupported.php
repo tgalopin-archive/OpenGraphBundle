@@ -1,6 +1,6 @@
 <?php
 
-namespace Tga\OpenGraphBundle\Registry\Exception;
+namespace Tga\OpenGraphBundle\Renderer\Exception;
 
 use Tga\OpenGraphBundle\Registry\Registry;
 
@@ -29,7 +29,7 @@ class EntityNotSupported extends \RuntimeException
      */
     public function __construct($entity, Registry $registry, $code = 0, \Exception $previous = null)
     {
-        parent::__construct(sprintf('No OpenGraph map in the registry supports entity %s.', get_class($entity)));
+        parent::__construct(sprintf('No OpenGraph map in the registry supports class "%s".', get_class($entity)));
 
         $this->entity = $entity;
         $this->registry = $registry;

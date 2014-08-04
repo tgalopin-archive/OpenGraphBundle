@@ -33,6 +33,7 @@ class Registry
     public function __construct(Router $router)
     {
         $this->router = $router;
+        $this->maps = array();
     }
 
     /**

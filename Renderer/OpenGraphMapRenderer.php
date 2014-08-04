@@ -3,7 +3,7 @@
 namespace Tga\OpenGraphBundle\Renderer;
 
 use Tga\OpenGraphBundle\Document\OpenGraphDocument;
-use Tga\OpenGraphBundle\Registry\Exception\EntityNotSupported;
+use Tga\OpenGraphBundle\Renderer\Exception\EntityNotSupported;
 use Tga\OpenGraphBundle\Registry\Registry;
 
 class OpenGraphMapRenderer
@@ -24,7 +24,7 @@ class OpenGraphMapRenderer
     /**
      * @param object $entity
      * @return string
-     * @throws \Tga\OpenGraphBundle\Registry\Exception\EntityNotSupported
+     * @throws EntityNotSupported
      */
     public function render($entity)
     {
