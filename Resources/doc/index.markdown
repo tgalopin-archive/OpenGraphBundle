@@ -19,17 +19,9 @@ Installation is very quick:
 
 ### 1. Download it with Composer
 
-Add the bundle to your `composer.json` file:
+Add the bundle to your `composer.json` file by running:
 
-``` json
-{
-    "require": {
-        "tga/opengraph-bundle": "~1.0"
-    }
-}
-```
-
-And run `composer install tga/opengraph-bundle`.
+`composer require tga/opengraph-bundle:dev-master`
 
 ### 2. Enable it in your kernel
 
@@ -169,7 +161,7 @@ we will have to use the tag `open_graph.map`:
 
 ### Using the map
 
-Our map is registered, so we can use it anywhere we want to render our <meta>.
+Our map is registered, so we can use it anywhere we want to render entities supported by it.
 For instance, with Twig:
 
 
@@ -178,7 +170,7 @@ For instance, with Twig:
     <head>
         <title>Blog post</title>
 
-        {{ tga_render_opengraph(blogPost) }}
+        {{ tga_render_opengraph(blogPost) }} <!-- blogPost should be an instance of BlogPost -->
     </head>
     <body>
         ...
@@ -197,8 +189,8 @@ You will need very often the router in your maps to generate URL.
 
 As your maps are services, you can easily pass the router to them using the service definition.
 
-However, the TgaOpenGraphBundle provides a more convenient way to use the router
-in your maps: if your map extends the `RouterAware` class, the bundle will pass the router
+However, the TgaOpenGraphBundle provides a more convenient way to inject it in your maps:
+if your map extends the `RouterAware` class, the bundle will pass the router
 to it automatically:
 
 ``` php
