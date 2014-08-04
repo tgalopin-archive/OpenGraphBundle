@@ -24,7 +24,7 @@ Add the bundle to your `composer.json` file:
 ``` json
 {
     "require": {
-        "tga/opengraph-bundle": "~1.0"
+        "tga/opengraph-bundle": "dev-master"
     }
 }
 ```
