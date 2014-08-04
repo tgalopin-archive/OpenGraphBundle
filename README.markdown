@@ -1,16 +1,17 @@
 TgaOpenGraphBundle
 ==================
 
-The TgaOpenGraphBundle introduce OpenGraph into the Symfony2 world.
-It provides useful tools to use OpenGraph with your classic entities.
+The TgaOpenGraphBundle introduces OpenGraph into the Symfony2 world.
+It provides useful tools to use OpenGraph on your Doctrine entities,
+with flexibility and reusability.
 
-For instance, once set up, you will be able to render OpenGraph for
-any entity very easily:
+For instance, once set up, you will be able to render OpenGraph like
+this:
 
 ``` html
 <html>
     <head>
-        <title>Blog post</title>
+        <title>My blog post</title>
 
         {{ tga_render_opengraph(blogPost) }}
     </head>
@@ -20,9 +21,6 @@ any entity very easily:
 </html>
 ```
 
-The aim of this bundle is to introduce reusability and flexibility
-into your OpenGraph definitions.
-
 
 Documentation
 -------------
@@ -30,7 +28,7 @@ Documentation
 All the documentation is stored in the `Resources/doc` directory
 of this bundle:
 
-[Read the Documentation](https://github.com/tgalopin/OpenGraphBundle/blob/master/Resources/doc/index.md)
+[Read the Documentation](https://github.com/tgalopin/OpenGraphBundle/blob/master/Resources/doc/index.markdown)
 
 
 Installation
@@ -43,7 +41,7 @@ License
 -------
 
 This bundle is under the MIT license. See the complete license in the
-file: `LICENSE`
+file `LICENSE.markdown`
 
 
 Contributors

@@ -4,17 +4,13 @@ Getting Started With TgaOpenGraphBundle
 The TgaOpenGraphBundle is a simple way to improve how you manage OpenGraph
 into your Symfony2 application.
 
-> **Note**: OpenGraph is a standard protocol used by many websites around the world
-> (Facebook, Twitter, Google, ...) to obtain more precise informations about your
-> content.
+> **Note**: OpenGraph is a standard protocol used by many websites (Facebook,
+> Twitter, Google, ...) to obtain more precise informations about your content.
 >
 > [Learn more about OpenGraph](http://ogp.me/)
 
-The idea of this bundle it to associate each content entity in your app (a blog post,
-a static page or any other content) with spacific service, called the `OpenGraphMap`.
-This service will be able to render your content in an OpenGraph way so you will be
-able to display it in your HTML.
-
+The idea of this bundle it to associate each entity of your app with an **OpenGraph
+map**, a service able to create the OpenGraph document for your entity.
 
 Installation
 ------------
@@ -100,11 +96,13 @@ class BlogPost
 }
 ```
 
-### The OpenGraph map
+### Its OpenGraph map
 
 The map associated with your entity will be a class implementing
 `Tga\OpenGraphBundle\Map\OpenGraphMapInterface` and the two required methods of this interface :
 `map(OpenGraphDocument $document, $entity)` and `supports($entity)`.
+
+The recomanded way to store these maps is under the `OpenGraph` directory of your bundle.
 
 For instance, our map could look like this :
 
@@ -188,13 +186,20 @@ For instance, with Twig:
 </html>
 ```
 
+> **Note**: if no map is able to deal with the entity given in `tga_render_opengraph`,
+> an `EntityNotSupported` exception will be thrown.
 
-Using the router
-----------------
 
-You will need very often the router into your OpenGraph maps to fill the `og:url` property.
-To ease your job, the TgaOpenGraphBundle inject the router in your maps if they extends the
-`RouterAware` class:
+Inject the router
+-----------------
+
+You will need very often the router in your maps to generate URL.
+
+As your maps are services, you can easily pass the router to them using the service definition.
+
+However, the TgaOpenGraphBundle provides a more convenient way to use the router
+in your maps: if your map extends the `RouterAware` class, the bundle will pass the router
+to it automatically:
 
 ``` php
 <?php
@@ -224,5 +229,6 @@ class BlogPostMap extends RouterAware implements OpenGraphMapInterface
 }
 ```
 
-If the class extends `Tga\OpenGraphBundle\Routing\RouterAware`, the bundle will automatically
-inject the router in it so you will be able to use it with `$this->router`.
+As our map `BlogPostMap` extends `Tga\OpenGraphBundle\Routing\RouterAware`,
+we can automatically access the router using `$this->router` (**without** any
+modification of our service definition).
