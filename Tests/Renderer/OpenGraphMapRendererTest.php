@@ -33,7 +33,7 @@ class OpenGraphMapRendererTest extends \PHPUnit_Framework_TestCase
         $entity = new \stdClass();
         $entity->name = 'TestName';
 
-        $this->assertEquals("\t<meta property=\"og:title\" content=\"TestName\" />\r\n", $renderer->render($entity));
+        $this->assertTrue(strpos($renderer->render($entity), '<meta property="og:title" content="TestName" />') !== false);
     }
 
     /**
