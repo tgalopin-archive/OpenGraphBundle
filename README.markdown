@@ -1,6 +1,11 @@
 TgaOpenGraphBundle
 ==================
 
+[![Build Status](https://travis-ci.org/tgalopin/OpenGraphBundle.svg?branch=master)](https://travis-ci.org/tgalopin/OpenGraphBundle)
+[![Latest Stable Version](https://poser.pugx.org/tga/opengraph-bundle/v/stable.svg)](https://packagist.org/packages/tga/opengraph-bundle)
+[![Total Downloads](https://poser.pugx.org/tga/opengraph-bundle/downloads.svg)](https://packagist.org/packages/tga/opengraph-bundle)
+[![License](https://poser.pugx.org/tga/opengraph-bundle/license.svg)](https://github.com/tgalopin/OpenGraphBundle/blob/master/LICENSE.markdown)
+
 The TgaOpenGraphBundle introduces OpenGraph into the Symfony2 world.
 It provides useful tools to use OpenGraph on your Doctrine entities,
 with flexibility and reusability.
