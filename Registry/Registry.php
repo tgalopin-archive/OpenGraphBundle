@@ -2,11 +2,10 @@
 
 namespace Tga\OpenGraphBundle\Registry;
 
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\Routing\Router;
 use Tga\OpenGraphBundle\Map\AbstractOpenGraphMap;
 use Tga\OpenGraphBundle\Map\OpenGraphMapInterface;
 use Tga\OpenGraphBundle\Registry\Exception\FrozenRegistryException;
-use Tga\OpenGraphBundle\Routing\RouterAware;
 use Tga\OpenGraphBundle\Routing\RouterAwareInterface;
 
 class Registry
@@ -63,7 +62,7 @@ class Registry
             throw new FrozenRegistryException('unregister', $map);
         }
 
-        if ($key = array_search($map, $this->maps)) {
+        if (($key = array_search($map, $this->maps)) !== false) {
             unset($this->maps[$key]);
 
             return true;
@@ -98,6 +97,14 @@ class Registry
     public function getMaps()
     {
         return $this->maps;
+    }
+
+    /**
+     * @return Router
+     */
+    public function getRouter()
+    {
+        return $this->router;
     }
 
     /**

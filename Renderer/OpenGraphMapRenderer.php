@@ -44,6 +44,14 @@ class OpenGraphMapRenderer
     }
 
     /**
+     * @return \Tga\OpenGraphBundle\Registry\Registry
+     */
+    public function getRegistry()
+    {
+        return $this->registry;
+    }
+
+    /**
      * @return OpenGraphDocument
      */
     protected function createDocument()
