@@ -33,7 +33,7 @@ class OpenGraphExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'tga_render_opengraph' => new \Twig_Function_Method($this, 'renderOpenGraph', [ 'is_safe' => [ 'html' ] ]),
+            new \Twig_SimpleFunction('tga_render_opengraph', [$this, 'renderOpenGraph'], [ 'is_safe' => [ 'html' ] ]),
         ];
     }
 
