@@ -32,11 +32,11 @@ class OpenGraphMapRenderer
 
         foreach ($this->registry->getMaps() as $map) {
             if ($map->supports($entity)) {
-                $docuemnt = $this->createDocument();
+                $document = $this->createDocument();
 
-                $map->map($docuemnt, $entity);
+                $map->map($document, $entity);
 
-                return $docuemnt->render();
+                return $document->render();
             }
         }
 
